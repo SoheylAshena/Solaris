@@ -15,6 +15,8 @@
     "@tailwindcss/vite": "^4.1.17",
     "@types/three": "^0.181.0",
     "gsap": "^3.13.0",
+    "idb": "^8.0.3",
+    "music-metadata": "^11.10.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwindcss": "^4.1.17",
