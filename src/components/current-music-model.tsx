@@ -1,24 +1,27 @@
 import { useLoader } from "@react-three/fiber";
 import { OBJLoader } from "three/examples/jsm/Addons.js";
 import { useRef } from "react";
-import model_file from "../maya/music-info.obj";
+import model_file from "../maya/current-music.obj";
 import type { Group } from "three";
 import ModelLoader from "./model-loader";
 import HTMLModel from "./html-model";
 
-interface MusicModelProps {
+interface CurrentMusicModelProps {
   position?: [number, number, number];
   scale?: number;
 }
 
-const MusicModel: React.FC<MusicModelProps> = ({ position, scale }) => {
+const CurrentMusicModel: React.FC<CurrentMusicModelProps> = ({
+  position,
+  scale,
+}) => {
   const objectRef = useRef<Group>(null);
   const importedModel = useLoader(OBJLoader, model_file);
   const musicInfoMesh = importedModel.children[0];
 
   return (
     <group ref={objectRef} position={position} scale={scale}>
-      <ModelLoader model={musicInfoMesh} scale={0.3}>
+      <ModelLoader model={musicInfoMesh} scale={0.2}>
         <meshStandardMaterial
           attach={`material-0`}
           color={"white"}
@@ -40,24 +43,17 @@ const MusicModel: React.FC<MusicModelProps> = ({ position, scale }) => {
         />
       </ModelLoader>
       <HTMLModel
-        width="508px"
-        height="127px"
-        borderRadius="30px"
-        position={[0, 0, 0.3]}
+        width="485px"
+        height="485px"
+        borderRadius="50%"
+        position={[0, 0, 0.05]}
       >
-        <div className="bg-white w-full h-full flex items-center p-2 px-5 gap-5 justify-between text-black overflow-hidden">
-          <div className="bg-linear-to-br from-purple-400 to-pink-500 h-28 w-28 rounded-md shrink-0 flex items-center justify-center text-white font-bold text-xl">
-            Album Art
-          </div>
-          <div className="w-full">
-            <p className="text-2xl font-semibold">Midnight Dreams</p>
-            <p className="text-sm text-gray-600">The Echo Wave</p>
-            <p className="text-xs text-gray-500 mt-1">3:45 • Synthwave</p>
-          </div>
+        <div className="bg-linear-to-br from-purple-400 to-pink-500 h-full w-full flex items-center justify-center text-white font-bold text-3xl">
+          Album Art
         </div>
       </HTMLModel>
     </group>
   );
 };
 
-export default MusicModel;
+export default CurrentMusicModel;

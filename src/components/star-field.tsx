@@ -7,7 +7,7 @@ const StarField = ({ count = 1000, minRadius = 50, maxRadius = 200 }) => {
 
   useFrame(() => {
     if (pointsRef.current) {
-      pointsRef.current.rotateX(0.00008);
+      pointsRef.current.rotateX(0.00004);
     }
   });
 
