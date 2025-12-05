@@ -40,7 +40,6 @@ export interface SongItemProps {
   title: string;
   artist: string;
   duration: number;
-  index: number;
 }
 
 export interface PlayerControlsProps {

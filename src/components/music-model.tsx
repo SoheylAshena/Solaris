@@ -5,16 +5,28 @@ import model_file from "../maya/music-info.obj";
 import type { Group } from "three";
 import ModelLoader from "./model-loader";
 import HTMLModel from "./html-model";
+import type { SongItemProps } from "@/types";
+import { useSongImage } from "@/hooks/useSongImage";
+import musicImage from "@/assets/music.jpg";
+import { formatDuration } from "@/utils/formatDuration";
 
-interface MusicModelProps {
+interface MusicModelProps extends SongItemProps {
   position?: [number, number, number];
   scale?: number;
 }
 
-const MusicModel: React.FC<MusicModelProps> = ({ position, scale }) => {
+const MusicModel: React.FC<MusicModelProps> = ({
+  position,
+  scale,
+  title,
+  artist,
+  duration,
+  id,
+}) => {
   const objectRef = useRef<Group>(null);
   const importedModel = useLoader(OBJLoader, model_file);
   const musicInfoMesh = importedModel.children[0];
+  const imageURL = useSongImage(id);
 
   return (
     <group ref={objectRef} position={position} scale={scale}>
@@ -28,8 +40,6 @@ const MusicModel: React.FC<MusicModelProps> = ({ position, scale }) => {
         <meshStandardMaterial
           attach={`material-1`}
           color={"black"}
-          emissive={"white"}
-          emissiveIntensity={1}
           roughness={0}
         />
         <meshStandardMaterial
@@ -45,14 +55,23 @@ const MusicModel: React.FC<MusicModelProps> = ({ position, scale }) => {
         borderRadius="30px"
         position={[0, 0, 0.3]}
       >
-        <div className="bg-white w-full h-full flex items-center p-2 px-5 gap-5 justify-between text-black overflow-hidden">
-          <div className="bg-linear-to-br from-purple-400 to-pink-500 h-28 w-28 rounded-md shrink-0 flex items-center justify-center text-white font-bold text-xl">
-            Album Art
-          </div>
-          <div className="w-full">
-            <p className="text-2xl font-semibold">Midnight Dreams</p>
-            <p className="text-sm text-gray-600">The Echo Wave</p>
-            <p className="text-xs text-gray-500 mt-1">3:45 • Synthwave</p>
+        <div className="group animate-fade-in p-2 px-5 cursor-pointer rounded-xl border border-white/10 bg-linear-to-r from-fuchsia-900/40 via-cyan-900/30 to-blue-900/40 h-full w-full shadow-md transition-all hover:from-fuchsia-600/40 hover:to-blue-600/40 hover:shadow-xl">
+          <div className="flex items-center justify-between gap-4">
+            <img
+              className="h-28 w-28 rounded-md object-cover"
+              src={imageURL || musicImage}
+            />
+            <div className="flex-1">
+              <div className="drop-shadow-glow font-semibold text-fuchsia-200 group-hover:text-fuchsia-300">
+                {title}
+              </div>
+              <div className="text-sm text-cyan-200 italic group-hover:text-cyan-100">
+                {artist}
+              </div>
+            </div>
+            <span className="font-mono text-sm text-blue-200 group-hover:text-blue-100">
+              {formatDuration(duration)}
+            </span>
           </div>
         </div>
       </HTMLModel>
