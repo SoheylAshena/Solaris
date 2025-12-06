@@ -54,13 +54,13 @@ const App = () => {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-screen bg-gray-950">
+    <div className="fixed top-0 left-0 h-screen w-full bg-gray-950">
       <Canvas camera={{ position: [0, 0, 10], fov: 35 }}>
         <CameraControls />
         <StarField count={60000} />
         <Suspense fallback={null}>
           {songs.map((song, index) => {
-            if (index > 10) return;
+            if (index > 9) return;
             return (
               <MusicModel
                 key={song.id}

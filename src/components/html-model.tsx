@@ -25,7 +25,6 @@ const HTMLModel: React.FC<HTMLModelProps> = ({
           borderRadius: borderRadius || "0px",
           overflow: "hidden",
         }}
-        occlude
         transform
         position={position}
         scale={0.3}

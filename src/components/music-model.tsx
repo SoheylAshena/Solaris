@@ -55,7 +55,7 @@ const MusicModel: React.FC<MusicModelProps> = ({
         borderRadius="30px"
         position={[0, 0, 0.3]}
       >
-        <div className="group animate-fade-in p-2 px-5 cursor-pointer rounded-xl border border-white/10 bg-linear-to-r from-fuchsia-900/40 via-cyan-900/30 to-blue-900/40 h-full w-full shadow-md transition-all hover:from-fuchsia-600/40 hover:to-blue-600/40 hover:shadow-xl">
+        <div className="group animate-fade-in h-full w-full cursor-pointer rounded-xl border border-white/10 bg-linear-to-r from-fuchsia-900/40 via-cyan-900/30 to-blue-900/40 p-2 px-5 shadow-md transition-all hover:from-fuchsia-600/40 hover:to-blue-600/40 hover:shadow-xl">
           <div className="flex items-center justify-between gap-4">
             <img
               className="h-28 w-28 rounded-md object-cover"

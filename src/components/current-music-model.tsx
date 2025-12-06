@@ -48,7 +48,7 @@ const CurrentMusicModel: React.FC<CurrentMusicModelProps> = ({
         borderRadius="50%"
         position={[0, 0, 0.05]}
       >
-        <div className="bg-linear-to-br from-purple-400 to-pink-500 h-full w-full flex items-center justify-center text-white font-bold text-3xl">
+        <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-purple-400 to-pink-500 text-3xl font-bold text-white">
           Album Art
         </div>
       </HTMLModel>
